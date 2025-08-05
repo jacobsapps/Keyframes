@@ -20,47 +20,33 @@ struct WeightlifterView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.indigo.ignoresSafeArea()
-            
-            VStack(spacing: 40) {
-                headerView
-                cloudsAndAnimation
-                    .frame(maxHeight: .infinity, alignment: .center)
+        cloudsAndAnimation
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .foregroundColor(.white)
+            .overlay(alignment: .center) {
+                pullTextEffect
             }
-            
-            pullTextEffect
-        }
-        .foregroundColor(.white)
-    }
-    
-    private var headerView: some View {
-        VStack(spacing: 16) {
-            Text("Weightlifter Animation")
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Text("Enhanced with cloud effects and peak moment indicators")
-                .font(.subheadline)
-                .foregroundColor(.white.opacity(0.8))
-        }
-        .padding()
+            .background(.indigo)
+            .edgesIgnoringSafeArea(.all)
     }
     
     private var cloudsAndAnimation: some View {
-        ZStack {
-            clouds
-            weightlifterAnimation
-        }
+        weightlifterAnimation
+            .offset(y: 100)
+            .overlay(alignment: .top) {
+                clouds
+            }
     }
     
     private var clouds: some View {
-        HStack(spacing: 80) {
+        HStack(spacing: 50) {
             cloudView(delay: 0.0)
             cloudView(delay: 0.1)
             cloudView(delay: 0.2)
+            cloudView(delay: 0.3)
+            cloudView(delay: 0.4)
         }
-        .offset(y: -230)
+        .offset(y: -60)
     }
     
     private func cloudView(delay: Double) -> some View {

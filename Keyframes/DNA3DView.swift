@@ -1,10 +1,3 @@
-//
-//  DNA3DView.swift
-//  Keyframes
-//
-//  Created by Jacob Bartlett on 01/08/2025.
-//
-
 import SwiftUI
 
 struct DNA3DView: View {
@@ -21,30 +14,15 @@ struct DNA3DView: View {
     @State private var basePairCount: Double = 10
     
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            
-            VStack(spacing: 30) {
-                headerView
-                basePairSlider
-                dnaAnimation
-                    .frame(maxHeight: .infinity, alignment: .center)
-            }
+        HStack {
+            basePairSlider
+                .frame(width: 400)
+                
+            dnaAnimation
         }
-    }
-    
-    private var headerView: some View {
-        VStack(spacing: 16) {
-            Text("3D Helix Animation")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-            
-            Text("Enhanced 3D helix with opacity and color transitions")
-                .font(.subheadline)
-                .foregroundColor(.white.opacity(0.7))
-        }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .background(.black)
+        .ignoresSafeArea(.all)
     }
     
     private var basePairSlider: some View {
@@ -63,7 +41,7 @@ struct DNA3DView: View {
         ZStack {
             dnaBasePairs
         }
-        .frame(width: 300, height: 400)
+        .frame(maxWidth: .infinity, maxHeight: 400, alignment: .center)
     }
     
     private var dnaBasePairs: some View {

@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Keyframes
-//
-//  Created by Jacob Bartlett on 01/08/2025.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -31,9 +24,10 @@ struct ContentView: View {
             DNA3DView()
                 .tabItem {
                     Image(systemName: "person.and.background.striped.horizontal")
-                    Text("3D DNA")
+                    Text("DNA")
                 }
         }
+        .tint(.orange)
     }
 }
 
