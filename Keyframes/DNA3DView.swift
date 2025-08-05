@@ -41,7 +41,7 @@ struct DNA3DView: View {
         ZStack {
             dnaBasePairs
         }
-        .frame(maxWidth: .infinity, maxHeight: 400, alignment: .center)
+        .frame(width: 300, height: 400)
     }
     
     private var dnaBasePairs: some View {
