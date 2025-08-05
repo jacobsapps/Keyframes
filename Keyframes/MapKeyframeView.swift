@@ -1,10 +1,3 @@
-//
-//  MapKeyframeView.swift
-//  Keyframes
-//
-//  Created by Jacob Bartlett on 01/08/2025.
-//
-
 import MapKit
 import SwiftUI
 

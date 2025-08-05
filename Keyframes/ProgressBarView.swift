@@ -46,16 +46,12 @@ struct ProgressBarView: View {
     
     private var progressBar: some View {
         TimelineView(.animation) { context in
-            // Calculate animation progress (0 to 1)
-            let animationDuration = 5.0 // Total duration of our keyframe animation
             let elapsedTime = animationTrigger ? context.date.timeIntervalSince(animationStartTime) : 0
-            let animationProgress = min(elapsedTime / animationDuration, 1.0)
             
-            // Use value(progress:) API to get the interpolated keyframe value
-            let keyframeValue = progressTimeline.value(progress: animationProgress)
+            // Get the interpolated keyframe progress from 0 to 1
+            let keyframeValue = progressTimeline.value(time: elapsedTime)
             
-            // Derive hue from the keyframe progress value (red to green)
-            let hue = keyframeValue.progress * 120 // 0 to 120 degrees
+            let hue = keyframeValue.progress * 120
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 15)

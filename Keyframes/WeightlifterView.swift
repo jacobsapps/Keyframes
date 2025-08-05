@@ -1,10 +1,3 @@
-//
-//  WeightlifterView.swift
-//  Keyframes
-//
-//  Created by Jacob Bartlett on 01/08/2025.
-//
-
 import SwiftUI
 
 struct WeightlifterView: View {
@@ -103,33 +96,33 @@ struct WeightlifterView: View {
             .offset(y: -50)
     }
     
-    private var weightlifterAnimation: some View {
-        Image(systemName: "figure.strengthtraining.traditional")
-            .resizable()
-            .foregroundStyle(.white)
-            .frame(width: 200, height: 200)
-            .keyframeAnimator(
-                initialValue: WeightlifterKeyframes(),
-                repeating: true
-            ) { figure, keyframes in
-                figure
-                    .scaleEffect(y: keyframes.verticalScale, anchor: .bottom)
-                    .offset(y: keyframes.verticalOffset)
-            } keyframes: { _ in
-                KeyframeTrack(\.verticalScale) {
-                    LinearKeyframe(0.5, duration: 0.25)
-                    LinearKeyframe(1.0, duration: 0.25)
-                    LinearKeyframe(1.3, duration: 0.25)
-                    LinearKeyframe(1.0, duration: 0.25)
-                }
-                
-                KeyframeTrack(\.verticalOffset) {
-                    LinearKeyframe(20, duration: 0.25)
-                    SpringKeyframe(-40, duration: 0.5, spring: .snappy)
-                    CubicKeyframe(0, duration: 0.25)
-                }
+private var weightlifterAnimation: some View {
+    Image(systemName: "figure.strengthtraining.traditional")
+        .resizable()
+        .foregroundStyle(.white)
+        .frame(width: 200, height: 200)
+        .keyframeAnimator(
+            initialValue: WeightlifterKeyframes(),
+            repeating: true
+        ) { figure, keyframes in
+            figure
+                .scaleEffect(y: keyframes.verticalScale, anchor: .bottom)
+                .offset(y: keyframes.verticalOffset)
+        } keyframes: { _ in
+            KeyframeTrack(\.verticalScale) {
+                LinearKeyframe(0.5, duration: 0.25)
+                LinearKeyframe(1.0, duration: 0.25)
+                LinearKeyframe(1.3, duration: 0.25)
+                LinearKeyframe(1.0, duration: 0.25)
             }
-    }
+            
+            KeyframeTrack(\.verticalOffset) {
+                LinearKeyframe(20, duration: 0.25)
+                SpringKeyframe(-40, duration: 0.5, spring: .snappy)
+                CubicKeyframe(0, duration: 0.25)
+            }
+        }
+}
 }
 
 #Preview {
